@@ -1,1 +1,1 @@
-# blgr-app
+README: meanStarter
