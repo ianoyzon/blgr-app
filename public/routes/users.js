@@ -37,6 +37,7 @@ angular.module('mean.meanStarter').config(['$meanStateProvider',
           }
         }
       })
+
       .state('reset-password', {
         url: '/reset/:tokenId',
         templateUrl: 'meanStarter/views/users/reset-password.html',
