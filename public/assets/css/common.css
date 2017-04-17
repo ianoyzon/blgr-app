@@ -1,7 +1,24 @@
 .MEAN-Logo {
   height: 80%
 }
-
+.loginpanel{
+  width:50%;
+  margin:100px;
+}
+.signuphere{
+  float: right;
+}
+.tags{
+  font-size: 15px;
+  font-style: italic;
+}
+.tags span{
+  float: right;
+}
+.postimg{
+  width:50%;
+  align-content: center;
+}
 /*!
  * Start Bootstrap - Clean Blog v3.3.7+1 (http://startbootstrap.com/template-overviews/clean-blog)
  * Copyright 2013-2017 Start Bootstrap

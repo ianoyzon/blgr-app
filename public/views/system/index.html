@@ -1,131 +1,193 @@
-<div layout="column" flex data-ng-controller="IndexController">
-  <header class="intro-header" style="background-image: url('meanStarter/assets/img/home-bg.jpg')">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  <div class="site-heading">
-                      <h1>Wanderwall</h1>
-                      <hr class="small">
-                      <span class="subheading">A Clean Blog Theme by Gallagherl</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </header>
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          Man must explore, and this is exploration at its greatest
-                      </h2>
-                      <h3 class="post-subtitle">
-                          Problems look mighty small from 150 miles up
-                      </h3>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Gallagherl</a> on September 24, 2014</p>
-              </div>
-              <hr>
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                      </h2>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Gallagherl</a> on September 18, 2014</p>
-              </div>
-              <hr>
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          Science has not yet mastered prophecy
-                      </h2>
-                      <h3 class="post-subtitle">
-                          We predict too much for the next year and yet far too little for the next ten.
-                      </h3>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Gallagherl</a> on August 24, 2014</p>
-              </div>
-              <hr>
-              <div class="post-preview">
-                  <a href="post.html">
-                      <h2 class="post-title">
-                          Failure is not an option
-                      </h2>
-                      <h3 class="post-subtitle">
-                          Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                      </h3>
-                  </a>
-                  <p class="post-meta">Posted by <a href="#">Gallagherl</a> on July 8, 2014</p>
-              </div>
-              <hr>
-              <!-- Pager -->
-              <ul class="pager">
-                  <li class="next">
-                      <a href="#">Older Posts &rarr;</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
+
+<div  style="background:#0E3964;">
+<div class="container">
+
+<div class="row" ng-controller="HeaderController as hdrctr">
+  <div class="panel panel-default loginpanel" ng-if="!hdrctr.hdrvars.authenticated" >
+  <div class="panel-heading"><b>Welcome to blgr.</b></div>
+  <div class="panel-body">
+    <form name="loginForm" ng-submit="login.login()" data-ng-controller="LoginCtrl as login" class="login-box">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline"><b>Login</b></span>
+          <p class="error-text" ng-if="login.loginError">{{login.loginError}}</p>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input type="email" ng-model="login.user.email">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Password</label>
+          <input type="password" ng-model="login.user.password">
+        </md-input-container>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="btn"ui-sref="auth.signup">Sign up</md-button>
+        <span flex></span>
+        <md-button class="btn md-primary" type="submit">Login</md-button>
+      </md-card-actions>
+    </form>
+
+<!--    <form name="sentMessage" id="contactForm" ng-submit="signIn()" novalidate>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Email Address</label>
+                <input type="text" class="form-control" placeholder="Email" id="name" required data-validation-required-message="Please enter your name.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+
+        <br>
+        <small class="signuphere">Don't have an account? Sign up here</small>
+        <div id="success"></div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <button type="submit" class="btn btn-default">Send</button>
+            </div>
+        </div>
+    </form>-->
   </div>
-  <!--
-  <md-content layout="column" layout-padding flex>
-    <md-divider></md-divider>
-    <div layout="row" layout-align="space-around start" layout-padding flex>
+</div>
 
-      <div class="left" layout="column" layout-align="center center" flex="60">
-        <h1>Welcome to the MEAN stack</h2>
-        <p class="md-headline">Daphne (our ninja mascot) says...</p>
-        <div flex>
-        <img src="/meanStarter/assets/img/woman_ninja_forg_pass.png"/>
+<div class="posts" ng-if="hdrctr.hdrvars.authenticated" >
+  <div class=" margin"  style="height:100px;">
+
+  </div>
+  <div class="container" style="width:50%;">
+    <div class="row">
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Sample Post Title</div>
+      <div class="panel-body"><img class="postimg" src="https://travel.jumia.com/blog/ng/wp-content/uploads/2016/01/Travel-womanArmsOutstretched-147079253.jpg"></div>
+
+      <div class="panel-footer">
+        <div class="tags">
+      <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+    <span ng-click> #tags</span>
+
+
         </div>
       </div>
-      <div class="right" layout="column" flex>
-       <div layout="column" style="margin-top:14%" layout-align="end center"></div>
-            <h2 >Read the docs</h2>
-        <div class="next-steps">
-          <md-list>
-            <md-list-item class="secondary-button-padding" ng-repeat="doc in docs" ng-click="null">
-              <p>
-                {{doc.text}}
-              </p>
-              <md-button class="md-secondary" ng-href="{{doc.link}}" target="_blank">More Info</md-button>
-            </md-list-item>
-          </md-list>
-        </div>
-        <md-divider></md-divider>
-       </div>
-    </div>
-  </md-content>
 
-   <md-fab-toolbar  md-open="false" count="0" md-direction="left">
-      <md-fab-trigger class="align-with-text">
-        <md-button  aria-label="menu" class="md-fab md-primary">
-          <md-tooltip>community</md-tooltip>
-          <md-icon class="group-icond">group</md-icon>
-        </md-button>
-      </md-fab-trigger>
-      <md-toolbar>
-        <md-fab-actions class="md-toolbar-tools">
-          <md-button aria-label="facebook" class="md-button" ng-href="https://facebook.com/groups/mean.io/" target="_blank">
-            <md-icon>face</md-icon>
-            Facebook
-          </md-button>
-          <md-button aria-label="github" class="md-button" ng-href="https://github.com/linnovate/mean/" target="_blank">
-            <md-icon>code</md-icon>
-            GitHub
-          </md-button>
-          <md-button aria-label="gitter" class="md-button" ng-href="https://gitter.im/linnovate/mean/" target="_blank">
-            <md-icon>textsms</md-icon>
-            Gitter
-          </md-button>
-          <md-button aria-label="hangout" class="md-button" ng-href="https://hangout.mean.io/" target="_blank">
-            <md-icon>voice_chat</md-icon>
-            Hangout
-          </md-button>
-        </md-fab-actions>
-      </md-toolbar>
-    </md-fab-toolbar>
-  -->
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Sample Post Title</div>
+      <div class="panel-body">Sample post content</div>
+
+      <div class="panel-footer">
+        <div class="tags">
+      <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+    <span ng-click> #tags</span>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Sample Post Title</div>
+      <div class="panel-body">Sample post content</div>
+
+      <div class="panel-footer">
+        <div class="tags">
+      <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+    <span ng-click> #tags</span>
+
+
+        </div>
+      </div>
+
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Sample Post Title</div>
+      <div class="panel-body">Sample post content</div>
+
+      <div class="panel-footer">
+        <div class="tags">
+      <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+    <span ng-click> #tags</span>
+
+
+        </div>
+      </div>
+
+    </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Sample Post Title</div>
+          <div class="panel-body">Sample post content</div>
+
+          <div class="panel-footer">
+            <div class="tags">
+          <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+        <span ng-click> #tags</span>
+
+
+            </div>
+          </div>
+
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Sample Post Title</div>
+          <div class="panel-body">Sample post content</div>
+
+          <div class="panel-footer">
+            <div class="tags">
+          <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+        <span ng-click> #tags</span>
+
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Sample Post Title</div>
+          <div class="panel-body">Sample post content</div>
+
+          <div class="panel-footer">
+            <div class="tags">
+          <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+        <span ng-click> #tags</span>
+
+
+            </div>
+          </div>
+
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Sample Post Title</div>
+          <div class="panel-body">Sample post content</div>
+
+          <div class="panel-footer">
+            <div class="tags">
+          <md-icon ng-click="">feedback</md-icon>  <md-icon ng-click>favorite_border</md-icon>
+        <span ng-click> #tags</span>
+
+
+            </div>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
 </div>

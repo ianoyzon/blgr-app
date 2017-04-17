@@ -89,5 +89,9 @@ angular.module('mean.system').controller('IndexController', ['$scope', 'Global',
         console.log('currentSlide:', currentSlide);
       }
     });
+    
+    $scope.signIn = function(){
+      console.log('you click me');
+    }
   }
 ]);

@@ -12,6 +12,10 @@ angular.module('mean.meanStarter').config(['$meanStateProvider', '$urlRouterProv
         url: '/',
         templateUrl: 'meanStarter/views/system/index.html'
       })
+      .state('account', {
+        url: '/home',
+        templateUrl: 'meanStarter/views/system/home.html'
+      })
       .state('about', {
         url: '/about',
         templateUrl: 'meanStarter/views/system/about.html'

@@ -19,6 +19,15 @@ angular.module('mean.meanStarter').config(['$meanStateProvider',
           }
         }
       })
+      .state('auth.signup', {
+        url: '/signup',
+        templateUrl: 'meanStarter/views/users/signup.html',
+        resolve: {
+          loggedin: function (MeanUser) {
+            return MeanUser.checkLoggedOut()
+          }
+        }
+      })
       .state('auth.register', {
         url: '/register',
         templateUrl: 'meanStarter/views/users/register.html',
